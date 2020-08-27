@@ -25,3 +25,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.card-body {
+  width: 50vw !important;
+}
+</style>
