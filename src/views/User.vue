@@ -10,21 +10,23 @@ import BackBtn from '@/components/BackBtn.vue';
 export default {
   name: 'User',
   mounted() {
-    navigator.geolocation.getCurrentPosition(console.log, console.log);
+    navigator.geolocation.getCurrentPosition(
+      this.geoSuccess, this.geoError,
+    );
   },
   components: {
     BackBtn,
   },
   methods: {
-    geoSuccess(pos) {
+    geoSuccess(position) {
       const coords = {
-        lat: pos.coords.latitude,
-        lng: pos.coords.longitude,
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
       };
-      console.log(coords);
+      this.$store.dispatch('searchByCoords', coords);
     },
     geoError(e) {
-      console.log(e);
+      console.warn(e);
     },
   },
 };

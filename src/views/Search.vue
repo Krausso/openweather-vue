@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     searchSubmit() {
-      console.log(this.searchValue);
+      this.$store.dispatch('searchByCity', this.searchValue);
       this.searchValue = '';
     },
   },
