@@ -16,6 +16,9 @@ export default new Vuex.Store({
     changeCityWeather(state, newWeather) {
       state.foundCityWeather = newWeather;
     },
+    changeUserWeather(state, newWeather) {
+      state.foundUserWeather = newWeather;
+    },
   },
   actions: {
     searchByCity({ commit, state }, city) {
@@ -29,12 +32,12 @@ export default new Vuex.Store({
           processError(error);
         });
     },
-    searchByCoords({ state }, coords) {
+    searchByCoords({ commit, state }, coords) {
       axios.get(
         `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lng}&appid=${state.apiKey}`,
       )
         .then((weather) => {
-          console.log(weather.data);
+          commit('changeUserWeather', correctData(weather.data));
         })
         .catch((error) => {
           processError(error);

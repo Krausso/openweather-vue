@@ -1,11 +1,13 @@
 <template>
   <section class="d-flex flex-column align-items-center">
+    <WeatherCards :data="this.$store.state.foundUserWeather" />
     <BackBtn />
   </section>
 </template>
 
 <script>
 import BackBtn from '@/components/BackBtn.vue';
+import WeatherCards from '@/components/WeatherCards.vue';
 
 export default {
   name: 'User',
@@ -15,7 +17,7 @@ export default {
     );
   },
   components: {
-    BackBtn,
+    BackBtn, WeatherCards,
   },
   methods: {
     geoSuccess(position) {
