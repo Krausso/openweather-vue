@@ -1,5 +1,5 @@
 <template>
-  <div class="app-header">
+  <div class="app-header d-flex flex-column align-items-center">
     <h2 class="header-title">Openweather Vue</h2>
     <p class="header-text">Here you can find out weather in several cities</p>
   </div>
