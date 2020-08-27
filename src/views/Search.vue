@@ -16,12 +16,12 @@
       Submit
     </b-button>
     <WeatherCards :data="this.$store.state.foundCityWeather" />
-    <BackBtn />
+    <HomeBtn />
   </form>
 </template>
 
 <script>
-import BackBtn from '@/components/BackBtn.vue';
+import HomeBtn from '@/components/HomeBtn.vue';
 import WeatherCards from '@/components/WeatherCards.vue';
 import { mapActions } from 'vuex';
 
@@ -33,7 +33,7 @@ export default {
     };
   },
   components: {
-    BackBtn, WeatherCards,
+    HomeBtn, WeatherCards,
   },
   methods: {
     ...mapActions([

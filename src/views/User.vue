@@ -1,12 +1,12 @@
 <template>
   <section class="d-flex flex-column align-items-center">
     <WeatherCards :data="this.$store.state.foundUserWeather" />
-    <BackBtn />
+    <HomeBtn />
   </section>
 </template>
 
 <script>
-import BackBtn from '@/components/BackBtn.vue';
+import HomeBtn from '@/components/HomeBtn.vue';
 import WeatherCards from '@/components/WeatherCards.vue';
 import { mapActions } from 'vuex';
 
@@ -18,7 +18,7 @@ export default {
     );
   },
   components: {
-    BackBtn, WeatherCards,
+    HomeBtn, WeatherCards,
   },
   methods: {
     ...mapActions([
