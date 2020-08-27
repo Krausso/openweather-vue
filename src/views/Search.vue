@@ -23,6 +23,7 @@
 <script>
 import BackBtn from '@/components/BackBtn.vue';
 import WeatherCards from '@/components/WeatherCards.vue';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Search',
@@ -35,9 +36,12 @@ export default {
     BackBtn, WeatherCards,
   },
   methods: {
+    ...mapActions([
+      'searchByCity',
+    ]),
     searchSubmit() {
       if (this.searchValue !== '') {
-        this.$store.dispatch('searchByCity', this.searchValue);
+        this.searchByCity(this.searchValue);
         this.searchValue = '';
       }
     },

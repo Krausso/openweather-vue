@@ -8,6 +8,7 @@
 <script>
 import BackBtn from '@/components/BackBtn.vue';
 import WeatherCards from '@/components/WeatherCards.vue';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'User',
@@ -20,12 +21,15 @@ export default {
     BackBtn, WeatherCards,
   },
   methods: {
+    ...mapActions([
+      'searchByCoords',
+    ]),
     geoSuccess(position) {
       const coords = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       };
-      this.$store.dispatch('searchByCoords', coords);
+      this.searchByCoords(coords);
     },
     geoError(e) {
       console.warn(e);
