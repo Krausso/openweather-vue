@@ -1,11 +1,10 @@
 <template>
-  <b-button
-    variant="primary"
-    href="/"
-    class="w-25 mt-3"
+  <router-link
+    to="/"
+    class="btn btn-primary w-25 mt-3"
   >
     Back
-  </b-button>
+  </router-link>
 </template>
 
 <script>
