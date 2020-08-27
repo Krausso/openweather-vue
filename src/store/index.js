@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 
-import { correctData, processError } from './functions/index';
+import { correctData, processError } from '@/functions/index';
 
 Vue.use(Vuex);
 
