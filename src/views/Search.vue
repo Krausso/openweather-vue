@@ -15,12 +15,14 @@
     >
       Submit
     </b-button>
+    <WeatherCards :data="this.$store.state.foundCityWeather" />
     <BackBtn />
   </form>
 </template>
 
 <script>
 import BackBtn from '@/components/BackBtn.vue';
+import WeatherCards from '@/components/WeatherCards.vue';
 
 export default {
   name: 'Search',
@@ -30,12 +32,14 @@ export default {
     };
   },
   components: {
-    BackBtn,
+    BackBtn, WeatherCards,
   },
   methods: {
     searchSubmit() {
-      this.$store.dispatch('searchByCity', this.searchValue);
-      this.searchValue = '';
+      if (this.searchValue !== '') {
+        this.$store.dispatch('searchByCity', this.searchValue);
+        this.searchValue = '';
+      }
     },
   },
 };

@@ -2,23 +2,32 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 
+import { correctData, processError } from './functions/index';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     apiKey: 'f0deab4028f35b340f369108e89c9cd5',
+    foundCityWeather: [],
+    foundUserWeather: [],
   },
   mutations: {
+    changeCityWeather(state, newWeather) {
+      state.foundCityWeather = newWeather;
+    },
   },
   actions: {
-    searchByCity({ state }, city) {
+    searchByCity({ commit, state }, city) {
       axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${state.apiKey}`,
       )
         .then((weather) => {
-          console.log(weather.data);
+          commit('changeCityWeather', correctData(weather.data));
         })
-        .catch((e) => console.warn(`${e.response.status} ${e.response.statusText}`));
+        .catch((error) => {
+          processError(error);
+        });
     },
     searchByCoords({ state }, coords) {
       axios.get(
@@ -26,6 +35,9 @@ export default new Vuex.Store({
       )
         .then((weather) => {
           console.log(weather.data);
+        })
+        .catch((error) => {
+          processError(error);
         });
     },
   },
