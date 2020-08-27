@@ -1,6 +1,6 @@
 <template>
   <section class="d-flex flex-column align-items-center">
-    <WeatherCards :data="this.$store.state.foundUserWeather" />
+    <WeatherCards :data="foundUserWeather" />
     <HomeBtn />
   </section>
 </template>
@@ -8,7 +8,7 @@
 <script>
 import HomeBtn from '@/components/HomeBtn.vue';
 import WeatherCards from '@/components/WeatherCards.vue';
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'User',
@@ -34,6 +34,11 @@ export default {
     geoError(e) {
       console.warn(e);
     },
+  },
+  computed: {
+    ...mapState([
+      'foundUserWeather',
+    ]),
   },
 };
 </script>

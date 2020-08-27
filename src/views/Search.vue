@@ -15,7 +15,7 @@
     >
       Submit
     </b-button>
-    <WeatherCards :data="this.$store.state.foundCityWeather" />
+    <WeatherCards :data="foundCityWeather" />
     <HomeBtn />
   </form>
 </template>
@@ -23,7 +23,7 @@
 <script>
 import HomeBtn from '@/components/HomeBtn.vue';
 import WeatherCards from '@/components/WeatherCards.vue';
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'Search',
@@ -45,6 +45,11 @@ export default {
         this.searchValue = '';
       }
     },
+  },
+  computed: {
+    ...mapState([
+      'foundCityWeather',
+    ]),
   },
 };
 </script>
